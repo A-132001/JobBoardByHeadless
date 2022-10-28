@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from .serializers import JobSerialzer
 from .models import Job
 from rest_framework.decorators import api_view
-from rest_framework import status
+from rest_framework import status,viewsets
 @api_view(["GET","POST"])
 def jobs_api(request):
     # Get
@@ -40,3 +40,9 @@ def job_details (request,id):
     elif request.method == "DELETE":
         job.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+#Api With ViewSets
+class viewset_Job(viewsets.ModelViewSet):
+    queryset = Job.objects.all()
+    serializer_class = JobSerialzer
