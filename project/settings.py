@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-p)l-hhg9z!8=73)=@c$dk7)2s6!%j-6c9e!7&p23s1q1ce$ayo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["jobs-gdsc-sohag.herokuapp.com"]
+ALLOWED_HOSTS = ["jobs-gdsc-sohag.herokuapp.com","127.0.0.1"]
 
 
 # Application definition
@@ -49,6 +49,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
