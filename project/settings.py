@@ -37,13 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
     'api',
     'rest_framework',
+    'cloudinary_storage',
 ]
 
 REST_FRAMEWORK = {
+    #pagination
 	'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 	'PAGE_SIZE': 3,
+
+    #Authentication
+    'DEFAULT_AUTHENTICTION_CALSSES':
+    ['rest_framework.authentication.BasicAuthentication'],
+    #permission
+    'DEFAULT_PERMISSION_CLASSES': 
+    ['rest_framework.permissions.IsAuthenticated',],
 }
 
 
@@ -135,3 +145,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = 'media/'
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+
+CLOUDINARY_STORAGE = {
+       'CLOUD_NAME' : 'djvp8qvr8',
+       'API_KEY': '984671289625423',
+       'API_SECRET':'-XMn4PpT_JjocvbVuSbYfYoNww8'
+}
+    

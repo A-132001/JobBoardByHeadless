@@ -1,9 +1,11 @@
 from django.shortcuts import render,HttpResponse
 from rest_framework.response import Response
-from .serializers import JobSerialzer
-from .models import Job
+from .serializers import JobSerialzer,UserSerialzer,UploadSerialzer
+from .models import Job,UploadFiles
 from rest_framework.decorators import api_view
 from rest_framework import status,viewsets
+from rest_framework.authentication import TokenAuthentication
+from django.contrib.auth.models import User
 @api_view(["GET","POST"])
 def jobs_api(request):
     # Get
@@ -46,3 +48,16 @@ def job_details (request,id):
 class viewset_Job(viewsets.ModelViewSet):
     queryset = Job.objects.all()
     serializer_class = JobSerialzer
+    # authentication_classes = [TokenAuthentication]
+
+
+
+# Auth Api 
+class userViewset(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerialzer
+    # authentication_classes = [TokenAuthentication]
+
+class UploadViewset(viewsets.ModelViewSet):
+    queryset = UploadFiles.objects.all()
+    serializer_class = UploadSerialzer
