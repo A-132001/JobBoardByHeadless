@@ -13,7 +13,7 @@ class Job(models.Model):
     created_at = models.DateField()
     type = models.IntegerField()
     location = models.CharField(max_length=50)
-    log = models.ImageField(blank=True, null=True)
+    logo = models.FileField(blank=True, null=True,upload_to = "JobsLogos")
     salary = models.IntegerField()
     vacancy = models.IntegerField()
     def __str__(self):
